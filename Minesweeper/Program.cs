@@ -28,6 +28,11 @@ namespace Minesweeper
                     fields[i][j] = new MineField();
                 }
             }
+
+            for (int i = 0; i < 20; i++)
+            {
+                fields[i]
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
