@@ -12,10 +12,10 @@ namespace Minesweeper
 {
     public partial class Form1 : Form
     {
+        DateTime vremeStart;
         public Form1()
         {
             InitializeComponent();
-
             for (int i = 0; i < Program.GRID_MAX; i++)
             {
                 for (int j = 0; j < Program.GRID_MAX; j++)
@@ -31,6 +31,15 @@ namespace Minesweeper
 
         }
 
-        
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            vremeStart = DateTime.Now;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            textBox1.Text = (DateTime.Now - vremeStart).ToString(@"mm\:ss");
+        }
     }
 }
