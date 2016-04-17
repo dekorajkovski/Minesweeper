@@ -15,7 +15,13 @@ namespace Minesweeper
         public Form1()
         {
             InitializeComponent();
-            
+            for (int i = 0; i < Program.GRID_MAX; i++)
+            {
+                for (int j = 0; j < Program.GRID_MAX; j++)
+                {
+                    mineField.Controls.Add(Program.fields[i][j]);
+                }
+            }
         }
 
 

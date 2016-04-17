@@ -33,13 +33,6 @@
             // 
             // mineField
             // 
-            for (int i = 0; i < Program.GRID_MAX; i++)
-            {
-                for (int j = 0; j < Program.GRID_MAX; j++)
-                {
-                    mineField.Controls.Add(Program.fields[i][j]);
-                }
-            }
             this.mineField.AccessibleName = "";
             this.mineField.Location = new System.Drawing.Point(12, 12);
             this.mineField.Name = "mineField";

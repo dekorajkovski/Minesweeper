@@ -22,7 +22,14 @@ namespace Minesweeper
         public Status status { get; set; }
 
         public MineField():base() {
-            
+
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            //this.Location = new System.Drawing.Point(3, 3);
+            //this.Name = "pictureBox1";
+            this.Size = new System.Drawing.Size(30, 30);
+            this.TabIndex = 0;
+            this.TabStop = false;
+           
             up = down = left = right = null;
             isBomb = false;
             status = Status.normal;
