@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace Minesweeper
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             //this.Location = new System.Drawing.Point(3, 3);
             //this.Name = "pictureBox1";
-            this.Size = new System.Drawing.Size(30, 30);
+            this.Size = new System.Drawing.Size(25, 25);
             this.TabIndex = 0;
             this.TabStop = false;
            
@@ -88,6 +89,21 @@ namespace Minesweeper
         }
         public void uncover(String a) {
 
+            if (a.Equals("bomb"))
+            {
+                Image = Image.FromFile("../../img/bomba.png");
+                //TODO: end game
+            }
+
+            else if (a.Equals("0"))
+            {
+                Image = Image.FromFile("../../img/blank.png");
+            }
+
+            else
+            {
+                Image = Image.FromFile("../../img/" + a + ".png");
+            }
         }
         
     }
