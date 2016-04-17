@@ -13,6 +13,7 @@ namespace Minesweeper
         public enum Status {
             uncovered,flagged,unknown,normal
         }
+        public Dictionary<String, Image> map;
         public MineField up { get; set; }
         public MineField down { get; set; }
         public MineField left { get; set; }
@@ -24,6 +25,14 @@ namespace Minesweeper
 
         public MineField():base() {
 
+            map = new Dictionary<string, Image>();
+            for (int i=1; i<=8; i++)
+            {
+                map.Add(i.ToString(), Image.FromFile("../../img/" + i.ToString() + ".png"));
+            }
+            map.Add("bomb", Image.FromFile("../../img/bomba.png"));
+            map.Add("0", Image.FromFile("../../img/blank.png"));
+            
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             //this.Location = new System.Drawing.Point(3, 3);
             //this.Name = "pictureBox1";
@@ -88,22 +97,16 @@ namespace Minesweeper
             }
         }
         public void uncover(String a) {
+            Image img;
+
+            map.TryGetValue(a, out img);
+            this.Image = img;
 
             if (a.Equals("bomb"))
             {
-                Image = Image.FromFile("../../img/bomba.png");
-                //TODO: end game
+                //TODO: FINISH GAME
             }
-
-            else if (a.Equals("0"))
-            {
-                Image = Image.FromFile("../../img/blank.png");
-            }
-
-            else
-            {
-                Image = Image.FromFile("../../img/" + a + ".png");
-            }
+                
         }
         
     }
