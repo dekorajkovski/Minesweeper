@@ -18,6 +18,9 @@ namespace Minesweeper
         [STAThread]
         static void Main()
         {
+            Application.SetCompatibleTextRenderingDefault(false);
+            
+
             for (int i = 0; i < GRID_MAX; i++)
             {
                 fields[i] = new MineField[20];
@@ -45,9 +48,10 @@ namespace Minesweeper
                     else fields[i][j].down = null;
                 }
             }
+
             Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(true);
             Application.Run(new Form1());
+
         }
     }
 }

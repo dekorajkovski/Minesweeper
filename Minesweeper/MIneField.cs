@@ -32,8 +32,8 @@ namespace Minesweeper
             }
             map.Add("bomb", Image.FromFile("../../img/bomba.png"));
             //map.Add("0", Image.FromFile("../../img/blank.png"));
-            
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+
+            this.BackColor = Color.Black;
             //this.Location = new System.Drawing.Point(3, 3);
             //this.Name = "pictureBox1";
             this.Size = new System.Drawing.Size(25, 25);
