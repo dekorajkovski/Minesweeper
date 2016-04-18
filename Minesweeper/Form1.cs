@@ -35,6 +35,7 @@ namespace Minesweeper
                 name = f2.name;
                 if (f2.choice.Equals("Лесно"))
                 {
+                    mineField.Controls.Clear();
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)
@@ -45,6 +46,7 @@ namespace Minesweeper
                 }
                 else if (f2.choice.Equals("Средно"))
                 {
+                    mineField.Controls.Clear();
                     for (int i = 0; i < 10; i++)
                     {
                         for (int j = 0; j < 10; j++)
@@ -55,6 +57,7 @@ namespace Minesweeper
                 }
                 else
                 {
+                    mineField.Controls.Clear();
                     for (int i = 0; i < 15; i++)
                     {
                         for (int j = 0; j < 15; j++)
