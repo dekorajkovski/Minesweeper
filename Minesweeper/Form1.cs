@@ -12,17 +12,12 @@ namespace Minesweeper
 {
     public partial class Form1 : Form
     {
+        String name;
         DateTime vremeStart;
         public Form1()
         {
             InitializeComponent();
-            for (int i = 0; i < Program.GRID_MAX; i++)
-            {
-                for (int j = 0; j < Program.GRID_MAX; j++)
-                {
-                    mineField.Controls.Add(Program.fields[i][j]);
-                }
-            }
+            
         }
 
 
@@ -32,9 +27,46 @@ namespace Minesweeper
         }
 
         private void startButton_Click(object sender, EventArgs e)
-        {
-            vremeStart = DateTime.Now;
-            timer1.Start();
+        {    
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
+            if (f2.name != "" && f2.choice != null)
+            {
+                name = f2.name;
+                if (f2.choice.Equals("Лесно"))
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        for (int j = 0; j < 5; j++)
+                        {
+                            mineField.Controls.Add(Program.fields[i][j]);
+                        }
+                    }
+                }
+                else if (f2.choice.Equals("Средно"))
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        for (int j = 0; j < 10; j++)
+                        {
+                            mineField.Controls.Add(Program.fields[i][j]);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < 15; i++)
+                    {
+                        for (int j = 0; j < 15; j++)
+                        {
+                            mineField.Controls.Add(Program.fields[i][j]);
+                        }
+                    }
+                }
+                vremeStart = DateTime.Now;
+                timer1.Start();
+            }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)

@@ -41,7 +41,7 @@
             this.mineField.Location = new System.Drawing.Point(16, 66);
             this.mineField.Margin = new System.Windows.Forms.Padding(4);
             this.mineField.Name = "mineField";
-            this.mineField.Size = new System.Drawing.Size(347, 241);
+            this.mineField.Size = new System.Drawing.Size(648, 597);
             this.mineField.TabIndex = 0;
             this.mineField.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -55,7 +55,7 @@
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.textBox1.Location = new System.Drawing.Point(143, 26);
+            this.textBox1.Location = new System.Drawing.Point(268, 26);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(82, 28);
             this.textBox1.TabIndex = 1;
@@ -76,7 +76,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 321);
+            this.ClientSize = new System.Drawing.Size(677, 676);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.mineField);
