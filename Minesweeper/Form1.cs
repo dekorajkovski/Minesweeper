@@ -17,7 +17,7 @@ namespace Minesweeper
         public Form1()
         {
             InitializeComponent();
-            
+            this.BackColor = Color.SeaGreen;
         }
 
 
@@ -32,10 +32,14 @@ namespace Minesweeper
             f2.ShowDialog();
             if (f2.name != "" && f2.choice != null)
             {
+                mineField.Controls.Clear();
                 name = f2.name;
                 if (f2.choice.Equals("Лесно"))
                 {
-                    mineField.Controls.Clear();
+                    this.Height = 260;
+                    this.Width = 195;
+                    mineField.Width = 170;
+                    mineField.Height = 200;
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)
@@ -46,7 +50,10 @@ namespace Minesweeper
                 }
                 else if (f2.choice.Equals("Средно"))
                 {
-                    mineField.Controls.Clear();
+                    this.Height = 420;
+                    this.Width = 345;
+                    mineField.Width = 320;
+                    mineField.Height = 370;
                     for (int i = 0; i < 10; i++)
                     {
                         for (int j = 0; j < 10; j++)
@@ -57,7 +64,10 @@ namespace Minesweeper
                 }
                 else
                 {
-                    mineField.Controls.Clear();
+                    this.Height = 580;
+                    this.Width = 495;
+                    mineField.Width = 470;
+                    mineField.Height = 540;
                     for (int i = 0; i < 15; i++)
                     {
                         for (int j = 0; j < 15; j++)

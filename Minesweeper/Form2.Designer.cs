@@ -50,6 +50,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(3, 22);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(70, 21);
@@ -65,7 +66,6 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(78, 21);
             this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Средно";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
@@ -76,7 +76,6 @@
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(72, 21);
             this.radioButton3.TabIndex = 5;
-            this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Тешко";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
