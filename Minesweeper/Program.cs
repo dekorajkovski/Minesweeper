@@ -36,7 +36,10 @@ namespace Minesweeper
             catch (Exception ex) {
             }
         }
+        public static void setLimits(int li) {
 
+
+        }
         
         public static void constructFields() {
             for (int i = 0; i < GRID_MAX; i++)
