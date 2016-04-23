@@ -18,6 +18,7 @@ namespace Minesweeper
         public Form2()
         {
             InitializeComponent();
+            MaximizeBox = false;
             this.Text = "Game";
             this.BackColor = Color.SeaGreen;
             textBox1.Text = "Player 1";
