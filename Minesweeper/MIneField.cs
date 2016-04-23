@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,7 @@ namespace Minesweeper
             map.Add("bomb", Image.FromFile("../../img/bomba.png"));
             //map.Add("0", Image.FromFile("../../img/blank.png"));
 
-            this.BackColor = Color.Black;
+            this.BackColor = Color.White;
             //this.Location = new System.Drawing.Point(3, 3);
             //this.Name = "pictureBox1";
             this.Size = new System.Drawing.Size(25, 25);
@@ -45,66 +46,110 @@ namespace Minesweeper
             status = Status.normal;
         }
 
+        private void recalculate()
+        {
+            if (this.up != null && this.up.status != Status.uncovered && !this.up.isBomb)
+            {
+                this.up.calculate();
+            }
+
+             if (this.up != null && this.up.right != null && this.right.up.status != Status.uncovered
+                  && !this.up.right.isBomb)
+            {
+                this.up.right.calculate();
+            }
+
+             if (this.left != null && this.left.status != Status.uncovered && !this.left.isBomb)
+            {
+                this.left.calculate();
+            }
+
+             if (this.left != null && this.left.up != null && this.left.up.status != Status.uncovered
+                    && !this.left.up.isBomb)
+            {
+                this.left.up.calculate();
+            }
+
+             if (this.down != null && this.down.status != Status.uncovered
+                    && !this.down.isBomb)
+            {
+                this.down.calculate();
+            }
+
+             if (this.down != null && this.down.left != null && this.down.left.status != Status.uncovered
+                   && !this.down.left.isBomb)
+            {
+                this.down.left.calculate();
+            }
+
+             if (this.right != null && this.right.status != Status.uncovered
+                    && !this.right.isBomb)
+            {
+                this.right.calculate();
+            }
+
+             if (this.right != null && this.right.down != null && this.right.down.status != Status.uncovered
+                    && !this.right.down.isBomb)
+            {
+                this.right.down.calculate();
+            }
+        }
         public void calculate() {
-            if (this.isBomb)
+
+            
+             if (this.isBomb)
             {
                 this.uncover("bomb");
-                
+                this.status = Status.uncovered;
             }
-            else if (this.status.Equals(Status.uncovered))
-            {
-                return;
-            }
+            
+            // else if (this.status.Equals(Status.uncovered))
+            //{
+            //  return;
+            // }
             else {
+                if (!this.isBomb)
+                {
+                    this.status = Status.uncovered;
+                    this.uncover("empty");
+                }
                 int num = 0;
                 if (this.up != null && this.up.isBomb) num++;
+
                 
-                else if (this.up != null) {
-                    this.up.calculate();
-                }
-                if (this.up != null&&this.up.right!=null&&this.up.right.isBomb) num++;
-                else if (this.up != null && this.up.right != null)
-                {
-                    this.up.right.calculate();
-                }
+                if (this.up != null && this.up.right != null && this.up.right.isBomb) num++;
+               
                 if (this.left != null && this.left.isBomb) num++;
-                else if (this.left != null) {
-                    this.left.calculate();
-                }
-                if (this.left != null && this.left.up != null && this.left.up.isBomb) num++;
-                else if (this.left != null && this.left.up != null) {
-                    this.left.up.calculate();
-                }
-                if (this.down != null && this.down.isBomb) num++;
-                else if (this.down != null) {
-                    this.down.calculate();
-                }
-                if (this.down != null && this.down.left != null && this.down.left.isBomb) num++;
-                else if (this.down != null && this.down.left != null) {
-                    this.down.left.calculate();
-                }
-                if (this.right != null && this.right.isBomb) num++;
-                else if (this.right != null) {
-                    this.right.calculate();
-                }
-                if (this.right != null && this.right.down != null && this.right.down.isBomb) num++;
-                else if (this.right != null && this.right.down != null) {
-                    this.right.down.calculate();
-                }
                 
+                if (this.left != null && this.left.up != null && this.left.up.isBomb) num++;
+                
+                if (this.down != null && this.down.isBomb) num++;
+                
+                if (this.down != null && this.down.left != null && this.down.left.isBomb) num++;
+               
+                if (this.right != null && this.right.isBomb) num++;
+                
+                if (this.right != null && this.right.down != null && this.right.down.isBomb) num++;
+                
+
                 this.uncover(num.ToString());
+                if (num == 0) this.recalculate();
+                Debug.WriteLine(num.ToString());
                 return;
             }
         }
         public void uncover(String a) {
             Image img;
-
+            if (a.Equals("empty")) {
+                this.BackColor = Color.LightBlue;
+                return;
+            }
             map.TryGetValue(a, out img);
             this.Image = img;
 
             if (a.Equals("bomb"))
             {
-                //TODO: FINISH GAME
+                this.Enabled = false;
             }
                 
         }
