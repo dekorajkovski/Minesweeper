@@ -46,12 +46,10 @@ namespace Minesweeper
                 name = f2.name;
                 if (f2.choice.Equals("Easy"))
                 {
-                    this.Height = 240;
-                    this.Width = 175;
-                    mineField.Width = 150;
-                    mineField.Height = 180;
-                    Program.resetFields();
-                    Program.canPlay = true;
+                    this.Height = 260;
+                    this.Width = 195;
+                    mineField.Width = 170;
+                    mineField.Height = 200;
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)

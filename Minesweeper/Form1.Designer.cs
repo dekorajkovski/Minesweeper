@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mineField = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            Program.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +61,10 @@
             this.label1.Size = new System.Drawing.Size(249, 49);
             this.label1.TabIndex = 3;
             this.label1.Text = "Minesweeper";
+            // 
+            // timer1
+            // 
+            Program.timer1.Tick += new System.EventHandler(timer1_Tick);
             // 
             // textBox1
             // 
