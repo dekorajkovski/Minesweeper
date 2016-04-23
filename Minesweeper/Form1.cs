@@ -44,6 +44,8 @@ namespace Minesweeper
             {
                 mineField.Controls.Clear();
                 name = f2.name;
+                Program.canPlay = true;
+                Program.resetFields();
                 if (f2.choice.Equals("Easy"))
                 {
                     this.Height = 240;
