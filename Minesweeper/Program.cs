@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -82,13 +83,32 @@ namespace Minesweeper
             {
                 for (int j = 0; j < GRID_MAX; j++)
                 {
-                    fields[i][j].BackColor = Color.White;
+                    fields[i][j].BackColor = Color.Transparent;
                     fields[i][j].Image= null;
                     fields[i][j].status = MineField.Status.normal;
+
+                   
+
                 }
             }
         }
-       
+
+        public static void boiKocka(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                MineField mf = (MineField)sender;
+                LinearGradientBrush linGrBrush = new LinearGradientBrush(new Point(mf.Height, 0), new Point(0, mf.Width), Color.FromArgb(255, 255, 225, 225), Color.FromArgb(50, 50, 50, 50));
+
+                Pen pen = new Pen(linGrBrush);
+
+                e.Graphics.FillRectangle(linGrBrush, 0, 0, mf.Height, mf.Width);
+
+            }
+            catch (Exception ex) {
+            }
+        }
+
 
         static void Main()
         {
