@@ -19,6 +19,7 @@ namespace Minesweeper
         public static System.Windows.Forms.Timer timer1;
         public static Thread oThread;
         public static Semaphore canContinue = new Semaphore(1,1);
+        public static Random random = new Random();
 
         /// <summary>
         /// The main entry point for the application.
@@ -90,11 +91,11 @@ namespace Minesweeper
                     {
 
                         fields[i][j] = new MineField();
-                        if (((i + j) % 5) == 0)
-                        {
-                            fields[i][j].isBomb = true;
-                            Debug.WriteLine(i.ToString() + " " + j.ToString());
-                        }
+                        //if (((i + j) % 5) == 0)
+                        //{
+                        //    fields[i][j].isBomb = true;
+                        //    Debug.WriteLine(i.ToString() + " " + j.ToString());
+                        //}
                         fields[i][j].Click += clickEvent;
                         
                     }
@@ -162,6 +163,43 @@ namespace Minesweeper
                 }
             }
         }
+
+        static void Shuffle<T>(T[] array)
+        {
+            int n = array.Length;
+            for (int i = 0; i < n; i++)
+            {
+                // NextDouble returns a random number between 0 and 1.
+                // ... It is equivalent to Math.random() in Java.
+                int r = i + (int)(random.NextDouble() * (n - i));
+                T t = array[r];
+                array[r] = array[i];
+                array[i] = t;
+            }
+        }
+
+        public static void randomNewGame(int rows) {
+            bool[] ar = new bool[rows*rows];
+            int bombs = (int)Math.Round(0.2 * rows * rows);
+            for (int i = 0; i < rows*rows; i++)
+            {
+                if (i < bombs) ar[i] = true;
+                else ar[i] = false;
+            }
+            Shuffle(ar);
+            int k = 0;
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < rows; j++)
+                {
+                    fields[i][j].isBomb = ar[k];
+                    k++;
+                }
+            }
+
+        }
+
+
 
         public static void boiKocka(object sender, PaintEventArgs e)
         {
