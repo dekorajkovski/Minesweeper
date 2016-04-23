@@ -46,10 +46,12 @@ namespace Minesweeper
                 name = f2.name;
                 if (f2.choice.Equals("Easy"))
                 {
-                    this.Height = 260;
-                    this.Width = 195;
-                    mineField.Width = 170;
-                    mineField.Height = 200;
+                    this.Height = 240;
+                    this.Width = 175;
+                    mineField.Width = 150;
+                    mineField.Height = 180;
+                    Program.resetFields();
+                    Program.canPlay = true;
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)
@@ -60,10 +62,10 @@ namespace Minesweeper
                 }
                 else if (f2.choice.Equals("Medium"))
                 {
-                    this.Height = 420;
-                    this.Width = 345;
-                    mineField.Width = 320;
-                    mineField.Height = 370;
+                    this.Height = 380;
+                    this.Width = 315;
+                    mineField.Width = 280;
+                    mineField.Height = 330;
                     for (int i = 0; i < 10; i++)
                     {
                         for (int j = 0; j < 10; j++)
@@ -74,10 +76,10 @@ namespace Minesweeper
                 }
                 else
                 {
-                    this.Height = 580;
-                    this.Width = 495;
-                    mineField.Width = 470;
-                    mineField.Height = 540;
+                    this.Height = 520;
+                    this.Width = 455;
+                    mineField.Width = 410;
+                    mineField.Height = 500;
                     for (int i = 0; i < 15; i++)
                     {
                         for (int j = 0; j < 15; j++)
@@ -89,7 +91,7 @@ namespace Minesweeper
                 vremeStart = DateTime.Now;
                 this.BackgroundImage = null;
                 this.BackColor = Color.SeaGreen;
-                timer1.Start();
+                Program.timer1.Start();
                 mineField.Show();
                 textBox1.Show();
                 label1.Hide();

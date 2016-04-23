@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.mineField = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +42,7 @@
             // 
             this.mineField.AccessibleName = "";
             this.mineField.Location = new System.Drawing.Point(16, 66);
-            this.mineField.Margin = new System.Windows.Forms.Padding(0);
+            this.mineField.Margin = new System.Windows.Forms.Padding(4);
             this.mineField.Name = "mineField";
             this.mineField.Size = new System.Drawing.Size(317, 20);
             this.mineField.TabIndex = 0;
@@ -61,10 +59,6 @@
             this.label1.Size = new System.Drawing.Size(249, 49);
             this.label1.TabIndex = 3;
             this.label1.Text = "Minesweeper";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // textBox1
             // 
@@ -111,7 +105,6 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -137,7 +130,7 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel mineField;
-        public System.Windows.Forms.Timer timer1;
+        
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
