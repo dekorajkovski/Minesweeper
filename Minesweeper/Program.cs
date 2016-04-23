@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -70,6 +71,17 @@ namespace Minesweeper
                     if (i != GRID_MAX - 1)
                         fields[i][j].down = fields[i + 1][j];
                     else fields[i][j].down = null;
+                }
+            }
+        }
+        public static void resetFields() {
+            for (int i = 0; i < GRID_MAX; i++)
+            {
+                for (int j = 0; j < GRID_MAX; j++)
+                {
+                    fields[i][j].BackColor = Color.White;
+                    fields[i][j].Image= null;
+                    fields[i][j].status = MineField.Status.normal;
                 }
             }
         }

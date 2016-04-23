@@ -50,6 +50,8 @@ namespace Minesweeper
                     this.Width = 195;
                     mineField.Width = 170;
                     mineField.Height = 200;
+                    Program.resetFields();
+                    Program.canPlay = true;
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)
