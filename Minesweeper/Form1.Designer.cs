@@ -97,6 +97,7 @@
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
             this.newGameToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
             this.newGameToolStripMenuItem.Text = "New game";
+            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // statisticsToolStripMenuItem
             // 

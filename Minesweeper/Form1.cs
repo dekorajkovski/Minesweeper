@@ -29,8 +29,15 @@ namespace Minesweeper
 
         }
 
-        private void startButton_Click(object sender, EventArgs e)
-        {    
+        
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            textBox1.Text = (DateTime.Now - vremeStart).ToString(@"mm\:ss");
+        }
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             Form2 f2 = new Form2();
             f2.ShowDialog();
             if (f2.name != "" && f2.choice != null)
@@ -84,13 +91,7 @@ namespace Minesweeper
                 mineField.Show();
                 textBox1.Show();
                 label1.Hide();
-            }
-            
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            textBox1.Text = (DateTime.Now - vremeStart).ToString(@"mm\:ss");
-        }
+    }
     }
 }
