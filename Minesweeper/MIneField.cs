@@ -155,7 +155,7 @@ namespace Minesweeper
 
             if (a.Equals("bomb"))
             {
-                //TODO: FINISH GAME
+                this.Enabled = false;
             }
                 
         }
