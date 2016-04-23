@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Minesweeper
         public Status status { get; set; }
 
         public MineField():base() {
-
+            this.Margin = new Padding(1);
             map = new Dictionary<string, Image>();
             for (int i=1; i<=8; i++)
             {
@@ -34,7 +35,9 @@ namespace Minesweeper
             map.Add("bomb", Image.FromFile("../../img/bomba.png"));
             //map.Add("0", Image.FromFile("../../img/blank.png"));
 
-            this.BackColor = Color.White;
+            this.Paint += new PaintEventHandler(boiKocka);
+            this.Refresh();
+            //this.BackColor = Color.White;
             //this.Location = new System.Drawing.Point(3, 3);
             //this.Name = "pictureBox1";
             this.Size = new System.Drawing.Size(25, 25);
@@ -101,6 +104,8 @@ namespace Minesweeper
             {
                 this.uncover("bomb");
                 this.status = Status.uncovered;
+                //this.Paint += new PaintEventHandler(boiBezGradient);
+                
             }
             
             // else if (this.status.Equals(Status.uncovered))
@@ -141,6 +146,7 @@ namespace Minesweeper
         public void uncover(String a) {
             Image img;
             if (a.Equals("empty")) {
+                //this.Paint += new PaintEventHandler(boiOtkrienaKocka);
                 this.BackColor = Color.LightBlue;
                 return;
             }
@@ -149,11 +155,18 @@ namespace Minesweeper
 
             if (a.Equals("bomb"))
             {
-                Program.canPlay = false;
-                Program.timer1.Stop(); 
+                //TODO: FINISH GAME
             }
+        protected void boiKocka(object sender, PaintEventArgs e)
+        {
+            LinearGradientBrush linGrBrush = new LinearGradientBrush(new Point(this.Height, 0), new Point(0, this.Width), Color.FromArgb(255, 255, 225, 225), Color.FromArgb(50, 50, 50, 50));
+
+            Pen pen = new Pen(linGrBrush);
                 
+            e.Graphics.FillRectangle(linGrBrush, 0, 0, this.Height, this.Width);
         }
         
+        
+
     }
 }
