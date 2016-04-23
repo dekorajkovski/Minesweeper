@@ -92,7 +92,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="img\1.png" />
     <Content Include="img\2.png" />
     <Content Include="img\3.png" />
     <Content Include="img\4.png" />

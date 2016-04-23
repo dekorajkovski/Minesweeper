@@ -119,7 +119,7 @@ namespace Minesweeper
             {
                 for (int j = 0; j < GRID_MAX; j++)
                 {
-                    fields[i][j].BackColor = Color.Transparent;
+                    fields[i][j].BackColor = Color.Beige;
                     fields[i][j].Image= null;
                     fields[i][j].status = MineField.Status.normal;
 
