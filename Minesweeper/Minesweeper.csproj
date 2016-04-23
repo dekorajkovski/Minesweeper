@@ -100,7 +100,8 @@
     <Content Include="img\7.png" />
     <Content Include="img\8.png" />
     <Content Include="img\bomba.png" />
-    <Content Include="img\prasalnik.png" />
+    <Content Include="img\flag.png" />
+    <Content Include="img\ques.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
