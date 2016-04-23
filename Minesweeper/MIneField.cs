@@ -51,7 +51,7 @@ namespace Minesweeper
                 this.up.calculate();
             }
 
-             if (this.up != null && this.up.right != null && this.right.up.status != Status.uncovered
+             if (this.up != null && this.up.right != null && this.up.right.status != Status.uncovered
                   && !this.up.right.isBomb)
             {
                 this.up.right.calculate();
