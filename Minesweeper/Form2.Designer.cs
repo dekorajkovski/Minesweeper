@@ -57,10 +57,10 @@
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(3, 22);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 21);
+            this.radioButton1.Size = new System.Drawing.Size(60, 21);
             this.radioButton1.TabIndex = 3;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Лесно";
+            this.radioButton1.Text = "Easy";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2
@@ -70,7 +70,7 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(78, 21);
             this.radioButton2.TabIndex = 4;
-            this.radioButton2.Text = "Средно";
+            this.radioButton2.Text = "Medium";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton3
@@ -78,9 +78,9 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(167, 22);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(72, 21);
+            this.radioButton3.Size = new System.Drawing.Size(60, 21);
             this.radioButton3.TabIndex = 5;
-            this.radioButton3.Text = "Тешко";
+            this.radioButton3.Text = "Hard";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -89,7 +89,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 23);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Почни!";
+            this.button1.Text = "Start!";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -99,7 +99,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(104, 23);
             this.button2.TabIndex = 7;
-            this.button2.Text = "Откажи";
+            this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -114,7 +114,7 @@
             this.groupBox1.Size = new System.Drawing.Size(257, 61);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Тежина";
+            this.groupBox1.Text = "Difficulty";
             // 
             // groupBox2
             // 
@@ -125,7 +125,7 @@
             this.groupBox2.Size = new System.Drawing.Size(257, 62);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Име";
+            this.groupBox2.Text = "Name";
             // 
             // errorProvider1
             // 

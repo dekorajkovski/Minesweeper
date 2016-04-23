@@ -44,7 +44,7 @@ namespace Minesweeper
             {
                 mineField.Controls.Clear();
                 name = f2.name;
-                if (f2.choice.Equals("Лесно"))
+                if (f2.choice.Equals("Easy"))
                 {
                     this.Height = 260;
                     this.Width = 195;
@@ -58,7 +58,7 @@ namespace Minesweeper
                         }
                     }
                 }
-                else if (f2.choice.Equals("Средно"))
+                else if (f2.choice.Equals("Medium"))
                 {
                     this.Height = 420;
                     this.Width = 345;
@@ -95,5 +95,10 @@ namespace Minesweeper
                 label1.Hide();
         }
     }
+
+        private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

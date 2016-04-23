@@ -40,9 +40,8 @@ namespace Minesweeper
                 if (radioButton1.Checked) choice = radioButton1.Text;
                 else if (radioButton2.Checked) choice = radioButton2.Text;
                 else choice = radioButton3.Text;
-                this.Close();
             }
-            
+            this.Close();
         }
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
