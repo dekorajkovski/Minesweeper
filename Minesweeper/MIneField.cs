@@ -25,7 +25,7 @@ namespace Minesweeper
         public Status status { get; set; }
 
         public MineField():base() {
-
+            this.Margin = new Padding(1);
             map = new Dictionary<string, Image>();
             for (int i=1; i<=8; i++)
             {

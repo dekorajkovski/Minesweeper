@@ -44,7 +44,7 @@
             // 
             this.mineField.AccessibleName = "";
             this.mineField.Location = new System.Drawing.Point(16, 66);
-            this.mineField.Margin = new System.Windows.Forms.Padding(4);
+            this.mineField.Margin = new System.Windows.Forms.Padding(0);
             this.mineField.Name = "mineField";
             this.mineField.Size = new System.Drawing.Size(317, 20);
             this.mineField.TabIndex = 0;
