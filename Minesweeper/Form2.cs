@@ -17,8 +17,10 @@ namespace Minesweeper
         
         public Form2()
         {
-            this.Text = "New game";
             InitializeComponent();
+            this.Text = "Game";
+            this.BackColor = Color.SeaGreen;
+            textBox1.Text = "Player 1";
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -29,9 +31,35 @@ namespace Minesweeper
         private void button1_Click(object sender, EventArgs e)
         {
             name = textBox1.Text.Trim();
-            if (radioButton1.Checked) choice = radioButton1.Text;
-            else if (radioButton2.Checked) choice = radioButton2.Text;
-            else choice = radioButton3.Text;
+            if (name.Length == 0)
+            {
+                MessageBox.Show("You must enter a name");
+            }
+            else
+            {
+                if (radioButton1.Checked) choice = radioButton1.Text;
+                else if (radioButton2.Checked) choice = radioButton2.Text;
+                else choice = radioButton3.Text;
+                this.Close();
+            }
+            
+        }
+
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if (textBox1.Text.Trim().Length == 0)
+            {
+                errorProvider1.SetError(textBox1, "Enter a name!");
+            }
+            else
+            {
+                errorProvider1.SetError(textBox1, null);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
             this.Close();
         }
     }

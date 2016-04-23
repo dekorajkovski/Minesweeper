@@ -87,6 +87,8 @@ namespace Minesweeper
                     }
                 }
                 vremeStart = DateTime.Now;
+                this.BackgroundImage = null;
+                this.BackColor = Color.SeaGreen;
                 timer1.Start();
                 mineField.Show();
                 textBox1.Show();

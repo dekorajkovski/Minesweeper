@@ -54,11 +54,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Calibri", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(67, 46);
+            this.label1.Location = new System.Drawing.Point(46, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 40);
+            this.label1.Size = new System.Drawing.Size(249, 49);
             this.label1.TabIndex = 3;
             this.label1.Text = "Minesweeper";
             // 
@@ -73,7 +73,7 @@
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.textBox1.Location = new System.Drawing.Point(252, 25);
+            this.textBox1.Location = new System.Drawing.Point(252, 31);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(82, 28);
             this.textBox1.TabIndex = 1;
@@ -95,15 +95,15 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
-            this.newGameToolStripMenuItem.Text = "New game";
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
+            this.newGameToolStripMenuItem.Text = "New";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // statisticsToolStripMenuItem
             // 
             this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
-            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
-            this.statisticsToolStripMenuItem.Text = "Statistics";
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.statisticsToolStripMenuItem.Text = "Stats";
             // 
             // aboutToolStripMenuItem
             // 
