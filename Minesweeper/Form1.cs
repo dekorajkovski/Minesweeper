@@ -16,13 +16,12 @@ namespace Minesweeper
         DateTime vremeStart;
         public Form1()
         {
-            
+
             InitializeComponent();
             MaximizeBox = false;
             this.Text = "Minesweeper";
             textBox1.Hide();
             mineField.Hide();
-            pictureBox1.Image = Image.FromFile("../../img/smile.jpg");
             this.BackgroundImage = Image.FromFile("../../img/bground.jpg");
         }
 
@@ -32,7 +31,7 @@ namespace Minesweeper
 
         }
 
-        
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -102,9 +101,9 @@ namespace Minesweeper
                 mineField.Show();
                 textBox1.Show();
                 label1.Hide();
-        }
+            }
             Program.canContinue.Release();
-    }
+        }
 
         private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -113,7 +112,7 @@ namespace Minesweeper
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This game is a FINKI project.\nMade by:\nBorijan Georgievski\nDejan Rajkovski\nBodan Gjozinski","About");
+            MessageBox.Show("This game is a FINKI project.\nMade by:\nBorijan Georgievski\nDejan Rajkovski\nBodan Gjozinski", "About");
         }
     }
 }
