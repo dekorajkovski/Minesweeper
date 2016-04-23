@@ -15,7 +15,7 @@ namespace Minesweeper
         public enum Status {
             uncovered,flagged,unknown,normal
         }
-        public Dictionary<String, Image> map;
+        public static Dictionary<String, Image> map;
         public MineField up { get; set; }
         public MineField down { get; set; }
         public MineField left { get; set; }
@@ -27,12 +27,7 @@ namespace Minesweeper
 
         public MineField():base() {
             this.Margin = new Padding(1);
-            map = new Dictionary<string, Image>();
-            for (int i=1; i<=8; i++)
-            {
-                map.Add(i.ToString(), Image.FromFile("../../img/" + i.ToString() + ".png"));
-            }
-            map.Add("bomb", Image.FromFile("../../img/bomba.png"));
+            
             //map.Add("0", Image.FromFile("../../img/blank.png"));
 
             this.Paint += new PaintEventHandler(Program.boiKocka);
@@ -145,6 +140,9 @@ namespace Minesweeper
         }
         public void uncover(String a)
         {
+            if (a.Equals("normal")) {
+
+            }
             Image img;
             if (a.Equals("empty"))
             {

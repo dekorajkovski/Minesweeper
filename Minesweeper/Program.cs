@@ -31,24 +31,57 @@ namespace Minesweeper
             if (!canPlay) return;
             try
             {
+                MouseEventArgs me = (MouseEventArgs)e;
                 MineField field = (MineField)sender;
-                if (field.isBomb) {
-                    field.uncover("bomb");
-                    Program.canPlay = false;
-                    uncoverBombs();
-                    Program.timer1.Stop();
+                if (me.Button == System.Windows.Forms.MouseButtons.Right)
+                {
+                    if (field.status == MineField.Status.uncovered) return;
+                    if (field.status == MineField.Status.normal)
+                    {
+                        field.status = MineField.Status.flagged;
+                        field.uncover("flag");
+                    }
+                    else if (field.status == MineField.Status.flagged)
+                    {
+                        field.status = MineField.Status.unknown;
+                        field.uncover("ques");
+                    }
+                    else if (field.status == MineField.Status.unknown)
+                    {
+                        field.status = MineField.Status.normal;
+                        field.uncover("normal");
+                    }
                 }
-                //field.status = MineField.Status.uncovered;
-                if(field.status!=MineField.Status.uncovered)
-                field.calculate();
-                Debug.WriteLine("field clicked");
+                else {
+                    if (field.isBomb)
+                    {
+                        field.uncover("bomb");
+                        Program.canPlay = false;
+                        uncoverBombs();
+                        Program.timer1.Stop();
+                    }
+                    //field.status = MineField.Status.uncovered;
+                    if (field.status == MineField.Status.normal)
+                        field.calculate();
+                    Debug.WriteLine("field clicked");
+                }
             }
             catch (Exception ex) {
             }
         }
+
+       
         private class GenerateFields {
             public static void generate()
             {
+                MineField.map = new Dictionary<string, Image>();
+                for (int i = 1; i <= 8; i++)
+                {
+                    MineField.map.Add(i.ToString(), Image.FromFile("../../img/" + i.ToString() + ".png"));
+                }
+                MineField.map.Add("bomb", Image.FromFile("../../img/bomba.png"));
+                MineField.map.Add("flag", Image.FromFile("../../img/flag.png"));
+                MineField.map.Add("ques", Image.FromFile("../../img/ques.png"));
                 canContinue.WaitOne();
                 for (int i = 0; i < GRID_MAX; i++)
                 {
@@ -63,6 +96,7 @@ namespace Minesweeper
                             Debug.WriteLine(i.ToString() + " " + j.ToString());
                         }
                         fields[i][j].Click += clickEvent;
+                        
                     }
                 }
                 canContinue.Release();

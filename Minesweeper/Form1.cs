@@ -18,6 +18,9 @@ namespace Minesweeper
         {
             
             InitializeComponent();
+            Program.timer1 = new System.Windows.Forms.Timer(this.components);
+
+Program.timer1.Tick += new System.EventHandler(timer1_Tick);
             MaximizeBox = false;
             this.Text = "Minesweeper";
             textBox1.Hide();
