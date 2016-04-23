@@ -29,6 +29,12 @@ namespace Minesweeper
             try
             {
                 MineField field = (MineField)sender;
+                if (field.isBomb) {
+                    field.uncover("bomb");
+                    Program.canPlay = false;
+                    uncoverBombs();
+                    Program.timer1.Stop();
+                }
                 //field.status = MineField.Status.uncovered;
                 if(field.status!=MineField.Status.uncovered)
                 field.calculate();
@@ -37,8 +43,24 @@ namespace Minesweeper
             catch (Exception ex) {
             }
         }
-        public static void setLimits(int li) {
 
+        public static void uncoverBombs() {
+            for (int i = 0; i < GRID_MAX; i++)
+            {
+                for (int j = 0; j < GRID_MAX; j++)
+                {
+                    if (fields[i][j].isBomb) fields[i][j].uncover("bomb");
+                }
+            }
+        }
+
+        public static void setLimits(int li) {
+            connect();
+            for (int i = 0; i < li; i++) {
+                fields[i][li-1].right = null;
+                fields[li-1][i].right = null;
+
+            }
 
         }
         
@@ -59,6 +81,9 @@ namespace Minesweeper
                 }
             }
 
+            connect();
+        }
+        public static void connect() {
             for (int i = 0; i < GRID_MAX; i++)
             {
                 for (int j = 0; j < GRID_MAX; j++)

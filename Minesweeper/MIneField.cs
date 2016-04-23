@@ -155,11 +155,7 @@ namespace Minesweeper
             map.TryGetValue(a, out img);
             this.Image = img;
 
-            if (a.Equals("bomb"))
-            {
-                Program.canPlay = false;
-                Program.timer1.Stop();
-            }
+            
         }
         
         
