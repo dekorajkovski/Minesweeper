@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,21 @@ namespace Minesweeper
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void clickEvent(object sender, EventArgs e)
+        {
+            try
+            {
+                MineField field = (MineField)sender;
+                //field.status = MineField.Status.uncovered;
+                if(field.status!=MineField.Status.uncovered)
+                field.calculate();
+                Debug.WriteLine("field clicked");
+            }
+            catch (Exception ex) {
+            }
+        }
+
+            static void Main()
         {
             Application.SetCompatibleTextRenderingDefault(false);
             
@@ -26,7 +41,12 @@ namespace Minesweeper
                 fields[i] = new MineField[20];
                 for (int j = 0; j < GRID_MAX; j++)
                 {
+                   
                     fields[i][j] = new MineField();
+                    if (((i + j )% 5) == 0) { fields[i][j].isBomb = true;
+                        Debug.WriteLine(i.ToString() + " " + j.ToString());
+                    }
+                    fields[i][j].Click += clickEvent;
                 }
             }
 
