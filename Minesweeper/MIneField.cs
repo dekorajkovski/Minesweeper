@@ -149,7 +149,8 @@ namespace Minesweeper
 
             if (a.Equals("bomb"))
             {
-                //TODO: FINISH GAME
+                Program.canPlay = false;
+                Program.timer1.Stop(); 
             }
                 
         }

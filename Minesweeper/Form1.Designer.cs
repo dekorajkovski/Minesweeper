@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.mineField = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            Program.timer1 = new System.Windows.Forms.Timer(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +64,7 @@
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            Program.timer1.Tick += new System.EventHandler(timer1_Tick);
             // 
             // textBox1
             // 
@@ -136,7 +136,7 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel mineField;
-        private System.Windows.Forms.Timer timer1;
+        
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
