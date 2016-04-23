@@ -20,6 +20,7 @@ namespace Minesweeper
             this.Text = "Minesweeper";
             textBox1.Hide();
             mineField.Hide();
+            pictureBox1.Image = Image.FromFile("../../img/smile.jpg");
             this.BackgroundImage = Image.FromFile("../../img/bground.jpg");
         }
 
@@ -52,6 +53,7 @@ namespace Minesweeper
                     this.Width = 175;
                     mineField.Width = 150;
                     mineField.Height = 180;
+                    Program.setLimits(5);
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)
@@ -66,6 +68,7 @@ namespace Minesweeper
                     this.Width = 315;
                     mineField.Width = 280;
                     mineField.Height = 330;
+                    Program.setLimits(10);
                     for (int i = 0; i < 10; i++)
                     {
                         for (int j = 0; j < 10; j++)
@@ -80,6 +83,7 @@ namespace Minesweeper
                     this.Width = 455;
                     mineField.Width = 410;
                     mineField.Height = 500;
+                    Program.setLimits(15);
                     for (int i = 0; i < 15; i++)
                     {
                         for (int j = 0; j < 15; j++)
