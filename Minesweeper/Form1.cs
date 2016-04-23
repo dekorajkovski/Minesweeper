@@ -50,6 +50,8 @@ namespace Minesweeper
                     this.Width = 195;
                     mineField.Width = 170;
                     mineField.Height = 200;
+                    Program.resetFields();
+                    Program.canPlay = true;
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)
@@ -89,7 +91,7 @@ namespace Minesweeper
                 vremeStart = DateTime.Now;
                 this.BackgroundImage = null;
                 this.BackColor = Color.SeaGreen;
-                timer1.Start();
+                Program.timer1.Start();
                 mineField.Show();
                 textBox1.Show();
                 label1.Hide();

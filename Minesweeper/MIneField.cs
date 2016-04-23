@@ -35,7 +35,7 @@ namespace Minesweeper
             map.Add("bomb", Image.FromFile("../../img/bomba.png"));
             //map.Add("0", Image.FromFile("../../img/blank.png"));
 
-            this.Paint += new PaintEventHandler(boiKocka);
+            this.Paint += new PaintEventHandler(Program.boiKocka);
             this.Refresh();
             //this.BackColor = Color.White;
             //this.Location = new System.Drawing.Point(3, 3);
@@ -143,9 +143,13 @@ namespace Minesweeper
                 return;
             }
         }
-        public void uncover(String a) {
+        public void uncover(String a)
+        {
             Image img;
-            if (a.Equals("empty")) {
+            if (a.Equals("empty"))
+            {
+                //this.Paint += new PaintEventHandler(boiOtkrienaKocka);
+                this.BackColor = Color.LightBlue;
                 return;
             }
             map.TryGetValue(a, out img);
@@ -153,19 +157,12 @@ namespace Minesweeper
 
             if (a.Equals("bomb"))
             {
-                this.Enabled = false;
+                Program.canPlay = false;
+                Program.timer1.Stop();
             }
-                
         }
-        protected void boiKocka(object sender, PaintEventArgs e)
-        {
-            LinearGradientBrush linGrBrush = new LinearGradientBrush(new Point(this.Height, 0), new Point(0, this.Width), Color.FromArgb(255, 255, 225, 225), Color.FromArgb(50, 50, 50, 50));
-
-            Pen pen = new Pen(linGrBrush);
-
-            e.Graphics.FillRectangle(linGrBrush, 0, 0, this.Height, this.Width);
-        }
-
+        
+        
         
 
     }
