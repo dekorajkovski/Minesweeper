@@ -17,6 +17,7 @@ namespace Minesweeper
         
         public Form2()
         {
+            this.Text = "New game";
             InitializeComponent();
         }
 

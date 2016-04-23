@@ -17,7 +17,10 @@ namespace Minesweeper
         public Form1()
         {
             InitializeComponent();
-            this.BackColor = Color.SeaGreen;
+            this.Text = "Minesweeper";
+            textBox1.Hide();
+            mineField.Hide();
+            this.BackgroundImage = Image.FromFile("../../img/bground.jpg");
         }
 
 
@@ -78,6 +81,9 @@ namespace Minesweeper
                 }
                 vremeStart = DateTime.Now;
                 timer1.Start();
+                mineField.Show();
+                textBox1.Show();
+                label1.Hide();
             }
             
         }
