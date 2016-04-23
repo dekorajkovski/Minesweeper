@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +17,8 @@ namespace Minesweeper
         public static int GRID_MAX=20;
         public static bool canPlay = true;
         public static System.Windows.Forms.Timer timer1;
+        public static Thread oThread;
+        public static Semaphore canContinue = new Semaphore(1,1);
 
         /// <summary>
         /// The main entry point for the application.
@@ -43,6 +46,32 @@ namespace Minesweeper
             catch (Exception ex) {
             }
         }
+        private class GenerateFields {
+            public static void generate()
+            {
+                canContinue.WaitOne();
+                for (int i = 0; i < GRID_MAX; i++)
+                {
+                    fields[i] = new MineField[20];
+                    for (int j = 0; j < GRID_MAX; j++)
+                    {
+
+                        fields[i][j] = new MineField();
+                        if (((i + j) % 5) == 0)
+                        {
+                            fields[i][j].isBomb = true;
+                            Debug.WriteLine(i.ToString() + " " + j.ToString());
+                        }
+                        fields[i][j].Click += clickEvent;
+                    }
+                }
+                canContinue.Release();
+                
+                oThread.Abort();
+                connect();
+            }
+
+        }
 
         public static void uncoverBombs() {
             for (int i = 0; i < GRID_MAX; i++)
@@ -64,25 +93,7 @@ namespace Minesweeper
 
         }
         
-        public static void constructFields() {
-            for (int i = 0; i < GRID_MAX; i++)
-            {
-                fields[i] = new MineField[20];
-                for (int j = 0; j < GRID_MAX; j++)
-                {
-
-                    fields[i][j] = new MineField();
-                    if (((i + j) % 5) == 0)
-                    {
-                        fields[i][j].isBomb = true;
-                        Debug.WriteLine(i.ToString() + " " + j.ToString());
-                    }
-                    fields[i][j].Click += clickEvent;
-                }
-            }
-
-            connect();
-        }
+        
         public static void connect() {
             for (int i = 0; i < GRID_MAX; i++)
             {
@@ -140,8 +151,9 @@ namespace Minesweeper
             
 
             Application.SetCompatibleTextRenderingDefault(false);
-
-            constructFields();
+             oThread = new Thread(new ThreadStart(GenerateFields.generate));
+            oThread.Start();
+            //constructFields();
               
             
             Application.EnableVisualStyles();

@@ -16,7 +16,9 @@ namespace Minesweeper
         DateTime vremeStart;
         public Form1()
         {
+            
             InitializeComponent();
+            MaximizeBox = false;
             this.Text = "Minesweeper";
             textBox1.Hide();
             mineField.Hide();
@@ -43,6 +45,7 @@ namespace Minesweeper
             f2.ShowDialog();
             if (f2.name != "" && f2.choice != null)
             {
+                Program.canContinue.WaitOne();
                 mineField.Controls.Clear();
                 name = f2.name;
                 Program.canPlay = true;
@@ -100,6 +103,7 @@ namespace Minesweeper
                 textBox1.Show();
                 label1.Hide();
         }
+            Program.canContinue.Release();
     }
 
         private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
