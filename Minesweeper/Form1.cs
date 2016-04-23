@@ -59,6 +59,7 @@ Program.timer1.Tick += new System.EventHandler(timer1_Tick);
                     mineField.Width = 150;
                     mineField.Height = 180;
                     Program.setLimits(5);
+                    Program.randomNewGame(5);
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)
@@ -74,6 +75,7 @@ Program.timer1.Tick += new System.EventHandler(timer1_Tick);
                     mineField.Width = 280;
                     mineField.Height = 330;
                     Program.setLimits(10);
+                    Program.randomNewGame(10);
                     for (int i = 0; i < 10; i++)
                     {
                         for (int j = 0; j < 10; j++)
@@ -89,6 +91,7 @@ Program.timer1.Tick += new System.EventHandler(timer1_Tick);
                     mineField.Width = 410;
                     mineField.Height = 500;
                     Program.setLimits(15);
+                    Program.randomNewGame(15);
                     for (int i = 0; i < 15; i++)
                     {
                         for (int j = 0; j < 15; j++)
