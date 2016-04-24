@@ -13,9 +13,9 @@ namespace Minesweeper
     static class Program
     {
         public static MineField[][] fields=new MineField[20][];
-
         public static int GRID_MAX=20;
         public static bool canPlay = true;
+        public static bool firstClick = true;
         public static System.Windows.Forms.Timer timer1;
         public static Thread oThread;
         public static Semaphore canContinue = new Semaphore(1,1);
@@ -56,19 +56,30 @@ namespace Minesweeper
                 else {
                     if (field.isBomb)
                     {
-                        field.BackColor = Color.Red;
-                        field.uncover("bomb");
-                        Program.canPlay = false;
-                        uncoverBombs();
-                        Program.timer1.Stop();
+                        if (firstClick)
+                        {
+                            field.isBomb = false;
+                            firstClick = false;
+                        }
+                        else
+                        {
+                            field.BackColor = Color.Red;
+                            field.uncover("bomb");
+                            Program.canPlay = false;
+                            uncoverBombs();
+                            Program.timer1.Stop();
+                        }
                     }
                     //field.status = MineField.Status.uncovered;
                     if (field.status == MineField.Status.normal)
                         field.calculate();
+                    firstClick = false;
                     Debug.WriteLine("field clicked");
                 }
             }
+#pragma warning disable CS0168 // Variable is declared but never used
             catch (Exception ex) {
+#pragma warning restore CS0168 // Variable is declared but never used
             }
         }
 
@@ -179,7 +190,7 @@ namespace Minesweeper
 
         public static void randomNewGame(int rows) {
             bool[] ar = new bool[rows*rows];
-            int bombs = (int)Math.Round(0.2 * rows * rows);
+            int bombs = (int)Math.Round(0.3 * rows * rows);
             for (int i = 0; i < rows*rows; i++)
             {
                 if (i < bombs) ar[i] = true;
@@ -202,7 +213,7 @@ namespace Minesweeper
 
 
 
-        public static void boiKocka(object sender, PaintEventArgs e)
+       /* public static void boiKocka(object sender, PaintEventArgs e)
         {
             try
             {
@@ -216,7 +227,7 @@ namespace Minesweeper
             }
             catch (Exception ex) {
             }
-        }
+        } */
 
 
         static void Main()

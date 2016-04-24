@@ -51,6 +51,7 @@ namespace Minesweeper
                 mineField.Controls.Clear();
                 name = f2.name;
                 Program.canPlay = true;
+                Program.firstClick = true;
                 Program.resetFields();
                 if (f2.choice.Equals("Easy"))
                 {
@@ -119,7 +120,7 @@ namespace Minesweeper
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This game is a FINKI project.\nMade by:\nBorijan Georgievski\nDejan Rajkovski\nBodan Gjozinski","About");
+            MessageBox.Show("This game is a FINKI project.\nMade by:\nBorijan Georgievski\nDejan Rajkovski\nBodan Gjozinski\nSkopje, April 2016","About");
         }
 
     }
