@@ -191,7 +191,7 @@ namespace Minesweeper
 
         public static void randomNewGame(int rows) {
             bool[] ar = new bool[rows*rows];
-            int bombs = (int)Math.Round(0.3 * rows * rows);
+            int bombs = (int)Math.Round(0.25 * rows * rows);
             for (int i = 0; i < rows*rows; i++)
             {
                 if (i < bombs) ar[i] = true;
