@@ -30,7 +30,7 @@ namespace Minesweeper
             
             //map.Add("0", Image.FromFile("../../img/blank.png"));
 
-            this.Paint += new PaintEventHandler(Program.boiKocka);
+            //this.Paint += new PaintEventHandler(Program.boiKocka);
             this.Refresh();
             //this.BackColor = Color.White;
             //this.Location = new System.Drawing.Point(3, 3);
@@ -147,7 +147,7 @@ namespace Minesweeper
             if (a.Equals("empty"))
             {
                 //this.Paint += new PaintEventHandler(boiOtkrienaKocka);
-                this.BackColor = Color.LightBlue;
+                this.BackColor = Color.DarkGray;
                 return;
             }
             map.TryGetValue(a, out img);
