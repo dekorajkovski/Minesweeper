@@ -61,6 +61,7 @@ namespace Minesweeper
                     mineField.Height = 180;
                     Program.setLimits(5);
                     Program.randomNewGame(5);
+                    Program.remaining = 19;
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)
@@ -77,6 +78,7 @@ namespace Minesweeper
                     mineField.Height = 330;
                     Program.setLimits(10);
                     Program.randomNewGame(10);
+                    Program.remaining = 75;
                     for (int i = 0; i < 10; i++)
                     {
                         for (int j = 0; j < 10; j++)
@@ -93,6 +95,7 @@ namespace Minesweeper
                     mineField.Height = 500;
                     Program.setLimits(15);
                     Program.randomNewGame(15);
+                    Program.remaining = 169;
                     for (int i = 0; i < 15; i++)
                     {
                         for (int j = 0; j < 15; j++)

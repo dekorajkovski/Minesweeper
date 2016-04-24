@@ -13,6 +13,7 @@ namespace Minesweeper
     static class Program
     {
         public static MineField[][] fields=new MineField[20][];
+        public static int remaining;
         public static int GRID_MAX=20;
         public static bool canPlay = true;
         public static bool firstClick = true;
@@ -59,6 +60,7 @@ namespace Minesweeper
                         if (firstClick)
                         {
                             field.isBomb = false;
+                            remaining++;
                             firstClick = false;
                         }
                         else

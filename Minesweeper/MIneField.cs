@@ -92,22 +92,16 @@ namespace Minesweeper
                 this.right.down.calculate();
             }
         }
-        public void calculate() {
+        public void calculate() { 
 
-            
-             if (this.isBomb)
+            if (this.isBomb)
             {
                 this.uncover("bomb");
                 this.status = Status.uncovered;
-                //this.Paint += new PaintEventHandler(boiBezGradient);
-                
             }
-            
-            // else if (this.status.Equals(Status.uncovered))
-            //{
-            //  return;
-            // }
-            else {
+
+            else
+            {
                 if (!this.isBomb)
                 {
                     this.status = Status.uncovered;
@@ -116,23 +110,24 @@ namespace Minesweeper
                 int num = 0;
                 if (this.up != null && this.up.isBomb) num++;
 
-                
+
                 if (this.up != null && this.up.right != null && this.up.right.isBomb) num++;
-               
+
                 if (this.left != null && this.left.isBomb) num++;
-                
+
                 if (this.left != null && this.left.up != null && this.left.up.isBomb) num++;
-                
+
                 if (this.down != null && this.down.isBomb) num++;
-                
+
                 if (this.down != null && this.down.left != null && this.down.left.isBomb) num++;
-               
+
                 if (this.right != null && this.right.isBomb) num++;
-                
+
                 if (this.right != null && this.right.down != null && this.right.down.isBomb) num++;
-                
+
 
                 this.uncover(num.ToString());
+
                 if (num == 0) this.recalculate();
                 Debug.WriteLine(num.ToString());
                 return;
@@ -140,9 +135,7 @@ namespace Minesweeper
         }
         public void uncover(String a)
         {
-            if (a.Equals("normal")) {
 
-            }
             Image img;
             if (a.Equals("empty"))
             {
