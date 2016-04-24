@@ -16,10 +16,10 @@ namespace Minesweeper
         DateTime vremeStart;
         public Form1()
         {
-
+            this.components = new System.ComponentModel.Container();
             InitializeComponent();
             Program.timer1 = new System.Windows.Forms.Timer(this.components);
-
+            aboutToolStripMenuItem.Click += new EventHandler(aboutToolStripMenuItem_Click);
 Program.timer1.Tick += new System.EventHandler(timer1_Tick);
             MaximizeBox = false;
             this.Text = "Minesweeper";
@@ -34,7 +34,7 @@ Program.timer1.Tick += new System.EventHandler(timer1_Tick);
 
         }
 
-
+        
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -107,9 +107,10 @@ Program.timer1.Tick += new System.EventHandler(timer1_Tick);
                 mineField.Show();
                 textBox1.Show();
                 label1.Hide();
+                Program.canContinue.Release();
             }
-            Program.canContinue.Release();
-        }
+            
+    }
 
         private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -118,7 +119,8 @@ Program.timer1.Tick += new System.EventHandler(timer1_Tick);
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This game is a FINKI project.\nMade by:\nBorijan Georgievski\nDejan Rajkovski\nBodan Gjozinski", "About");
+            MessageBox.Show("This game is a FINKI project.\nMade by:\nBorijan Georgievski\nDejan Rajkovski\nBodan Gjozinski","About");
         }
+
     }
 }
