@@ -27,6 +27,8 @@ namespace Minesweeper
 
         public MineField():base() {
             this.Margin = new Padding(1);
+            
+            //map.Add("0", Image.FromFile("../../img/blank.png"));
 
             //this.Paint += new PaintEventHandler(Program.boiKocka);
             this.Refresh();
