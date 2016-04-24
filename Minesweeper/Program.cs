@@ -56,7 +56,6 @@ namespace Minesweeper
                 else {
                     if (field.isBomb)
                     {
-                        field.BackColor = Color.Red;
                         field.uncover("bomb");
                         Program.canPlay = false;
                         uncoverBombs();
@@ -122,8 +121,8 @@ namespace Minesweeper
         public static void setLimits(int li) {
             connect();
             for (int i = 0; i < li; i++) {
-                fields[i][li].right = null;
-                fields[li][i].right = null;
+                fields[i][li-1].right = null;
+                fields[li-1][i].right = null;
 
             }
 
@@ -187,8 +186,6 @@ namespace Minesweeper
                 if (i < bombs) ar[i] = true;
                 else ar[i] = false;
             }
-            Shuffle(ar);
-            Shuffle(ar);
             Shuffle(ar);
             int k = 0;
             for (int i = 0; i < rows; i++)
