@@ -107,8 +107,9 @@ Program.timer1.Tick += new System.EventHandler(timer1_Tick);
                 mineField.Show();
                 textBox1.Show();
                 label1.Hide();
-        }
-            Program.canContinue.Release();
+                Program.canContinue.Release();
+            }
+            
     }
 
         private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
