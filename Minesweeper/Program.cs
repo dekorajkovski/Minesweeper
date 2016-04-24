@@ -68,6 +68,7 @@ namespace Minesweeper
                             Program.canPlay = false;
                             uncoverBombs();
                             Program.timer1.Stop();
+                            MessageBox.Show("You lost, try again.","BOMB!",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                         }
                     }
                     //field.status = MineField.Status.uncovered;
