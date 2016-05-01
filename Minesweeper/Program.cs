@@ -136,8 +136,8 @@ namespace Minesweeper
         public static void setLimits(int li) {
             connect();
             for (int i = 0; i < li; i++) {
-                fields[i][li].right = null;
-                fields[li][i].right = null;
+                fields[i][li-1].right = null;
+                fields[li-1][i].down = null;
 
             }
 
