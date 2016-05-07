@@ -150,7 +150,7 @@ namespace Minesweeper
                     Program.canPlay = false;
                     Program.uncoverBombs();
                     Program.timer1.Stop();
-                    MessageBox.Show("VICTORY", "YOU WON!!!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("VICTORY", "YOU WON!!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 return;
             }

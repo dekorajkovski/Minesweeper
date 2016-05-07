@@ -23,9 +23,9 @@ namespace Minesweeper
         public override string ToString()
         {
             if (totalWon == 0)
-                return this.name + "'s stats: won :" + this.totalWon + " matches out of :" + this.totalPlayed + " games, has not won a game to have a best time !";
+                return this.name + "'s stats: won " + this.totalWon + " matches out of " + this.totalPlayed + " games, no best time.";
             else
-                return this.name + "'s stats won :" + this.totalWon + " matches out of :" + this.totalPlayed + "with a best time of:" + this.minsPlayed + " seconds";
+                return this.name + "'s stats: won " + this.totalWon + " matches out of " + this.totalPlayed + " with a best time of " + this.minsPlayed + " seconds.";
         }
 
     }
