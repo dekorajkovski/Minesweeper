@@ -106,6 +106,7 @@ namespace Minesweeper
                 {
                     this.status = Status.uncovered;
                     this.uncover("empty");
+                    
                 }
                 int num = 0;
                 if (this.up != null && this.up.isBomb) num++;
@@ -141,6 +142,16 @@ namespace Minesweeper
             {
                 //this.Paint += new PaintEventHandler(boiOtkrienaKocka);
                 this.BackColor = Color.DarkGray;
+                Program.uncoveredFields++;
+                Debug.WriteLine("uncovered:" + Program.uncoveredFields);
+                Debug.WriteLine("left fields:" + (Program.totalFields - Program.uncoveredFields).ToString());
+                if (Program.hasWon())
+                {
+                    Program.canPlay = false;
+                    Program.uncoverBombs();
+                    Program.timer1.Stop();
+                    MessageBox.Show("VICTORY", "YOU WON!!!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
                 return;
             }
             map.TryGetValue(a, out img);

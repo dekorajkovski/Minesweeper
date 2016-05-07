@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,14 +14,21 @@ namespace Minesweeper
     static class Program
     {
         public static MineField[][] fields=new MineField[20][];
-        public static int remaining;
-        public static int GRID_MAX=20;
+        public static string timeplayed = "0";
+        public static Dictionary<String, PlayerStatistics> stats;
+        public static FileStream statisticsFile = null;
+        public static int GRID_MAX=15;
         public static bool canPlay = true;
         public static bool firstClick = true;
         public static System.Windows.Forms.Timer timer1;
         public static Thread oThread;
         public static Semaphore canContinue = new Semaphore(1,1);
         public static Random random = new Random();
+        public static int uncoveredFields = 0;
+        public static int numOfTotalBombs = 0;
+        public static int selectedFlags = 0;
+        public static int selectedQuestionMarks = 0;
+        public static int totalFields = 0;
 
         /// <summary>
         /// The main entry point for the application.
@@ -28,6 +36,23 @@ namespace Minesweeper
         /// 
 
         [STAThread]
+        public static bool hasWon() {
+            if (totalFields - uncoveredFields - numOfTotalBombs == 0)
+            {
+                updateStats(true);
+                StreamWriter sw = new StreamWriter(statisticsFile);
+                sw.AutoFlush = true;
+                sw.WriteLine(Form2.name + " 1 " + Program.timeplayed);
+                return true;
+            }
+            return false;
+        }
+
+        public static void writeStats()
+        {
+            
+        }
+
         private static void clickEvent(object sender, EventArgs e)
         {
             if (!canPlay) return;
@@ -59,8 +84,9 @@ namespace Minesweeper
                     {
                         if (firstClick)
                         {
+                            
                             field.isBomb = false;
-                            remaining++;
+                            Program.numOfTotalBombs--;
                             firstClick = false;
                         }
                         else
@@ -70,6 +96,11 @@ namespace Minesweeper
                             Program.canPlay = false;
                             uncoverBombs();
                             Program.timer1.Stop();
+                            StreamWriter sw = new StreamWriter(statisticsFile);
+                            sw.AutoFlush = true;
+                            sw.WriteLine(Form2.name+" 0 "+Program.timeplayed);
+                            updateStats(false);
+                            
                             MessageBox.Show("You lost, try again.","BOMB!",MessageBoxButtons.OK,MessageBoxIcon.Stop);
                         }
                     }
@@ -77,7 +108,7 @@ namespace Minesweeper
                     if (field.status == MineField.Status.normal)
                         field.calculate();
                     firstClick = false;
-                    Debug.WriteLine("field clicked");
+                   // Debug.WriteLine("field clicked");
                 }
             }
 #pragma warning disable CS0168 // Variable is declared but never used
@@ -179,13 +210,13 @@ namespace Minesweeper
             }
         }
 
-        static void Shuffle<T>(T[] array)
+        static void Shuffle(bool[] array)
         {
             int n = array.Length;
             for (int i = 0; i < n; i++)
             {
                 int r = i + (int)(random.NextDouble() * (n - i));
-                T t = array[r];
+                bool t = array[r];
                 array[r] = array[i];
                 array[i] = t;
             }
@@ -194,6 +225,7 @@ namespace Minesweeper
         public static void randomNewGame(int rows) {
             bool[] ar = new bool[rows*rows];
             int bombs = (int)Math.Round(0.25 * rows * rows);
+            Program.numOfTotalBombs = bombs;
             for (int i = 0; i < rows*rows; i++)
             {
                 if (i < bombs) ar[i] = true;
@@ -232,11 +264,92 @@ namespace Minesweeper
             }
         } */
 
+        public static void updateStats(bool win)
+        {
+            if (!stats.ContainsKey(Form2.name))
+            {
+                PlayerStatistics ps = new PlayerStatistics(Form2.name);
+                ps.totalPlayed = 1;
+                
+                if (win)
+                {
+                    ps.totalWon++;
+                }
+
+                int f = 0;
+                int.TryParse(Program.timeplayed, out f);
+                ps.minsPlayed = f;
+
+                stats.Add(Form2.name, ps);
+
+            }
+            else {
+                PlayerStatistics tmp = null;
+                stats.TryGetValue(Form2.name, out tmp);
+                tmp.totalPlayed++;
+                
+                if (win)
+                {
+                    tmp.totalWon++;
+                }
+
+                int f = 0;
+                int.TryParse(Program.timeplayed, out f);
+                if (tmp.minsPlayed > f && win)
+                    tmp.minsPlayed = f;
+
+            }
+        }
 
         static void Main()
         {
-            
+            if (!File.Exists("../../res/saveFile.txt"))
+                statisticsFile= File.Create("../../res/saveFile.txt");
+            else statisticsFile = File.Open("../../res/saveFile.txt", FileMode.Open);
 
+            Debug.WriteLine(statisticsFile.CanRead);
+            stats = new Dictionary<string, PlayerStatistics>();
+            StreamReader stream=new StreamReader(statisticsFile);
+            string line = "";
+            while ((line = stream.ReadLine()) != null) {
+                string[] seperated = line.Split(' ');
+                if (!stats.ContainsKey(seperated[0]))
+                {
+                    PlayerStatistics ps = new PlayerStatistics(seperated[0]);
+                    ps.totalPlayed = 1;
+                    int g = 0;
+                    int.TryParse(seperated[1], out g);
+                    if (g == 1) {
+                        ps.totalWon++;
+                    }
+
+                    int f = 0;
+                    int.TryParse(seperated[2], out f);
+                    ps.minsPlayed = f;
+
+                    stats.Add(seperated[0], ps);
+
+                }
+                else {
+                    PlayerStatistics tmp = null;
+                    stats.TryGetValue(seperated[0], out tmp);
+                    tmp.totalPlayed++;
+                    int g = 0;
+                    int.TryParse(seperated[1], out g);
+                    if (g == 1)
+                    {
+                        tmp.totalWon++;
+                    }
+
+                    int f = 0;
+                    int.TryParse(seperated[2], out f);
+                    if(tmp.minsPlayed>f && g==1)
+                    tmp.minsPlayed = f;
+
+                }
+            }
+            ////stream.Close();
+            
             Application.SetCompatibleTextRenderingDefault(false);
              oThread = new Thread(new ThreadStart(GenerateFields.generate));
             oThread.Start();
