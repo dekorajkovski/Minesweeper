@@ -39,21 +39,24 @@ namespace Minesweeper
         private void timer1_Tick(object sender, EventArgs e)
         {
             textBox1.Text = (DateTime.Now - vremeStart).ToString(@"mm\:ss");
+            Program.timeplayed= (DateTime.Now - vremeStart).ToString(@"ss");
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2 f2 = new Form2();
             f2.ShowDialog();
-            if (f2.name != "" && f2.choice != null)
+            Form2.name = Form2.name.Replace(' ', '-');
+            if (Form2.name != "" && Form2.choice != null)
             {
                 Program.canContinue.WaitOne();
                 mineField.Controls.Clear();
-                name = f2.name;
+                name = Form2.name;
                 Program.canPlay = true;
                 Program.firstClick = true;
                 Program.resetFields();
-                if (f2.choice.Equals("Easy"))
+                Program.uncoveredFields = 0;
+                if (Form2.choice.Equals("Easy"))
                 {
                     this.Height = 240;
                     this.Width = 175;
@@ -61,7 +64,8 @@ namespace Minesweeper
                     mineField.Height = 180;
                     Program.setLimits(5);
                     Program.randomNewGame(5);
-                    Program.remaining = 19;
+                    
+                    Program.totalFields = 25;
                     for (int i = 0; i < 5; i++)
                     {
                         for (int j = 0; j < 5; j++)
@@ -70,7 +74,7 @@ namespace Minesweeper
                         }
                     }
                 }
-                else if (f2.choice.Equals("Medium"))
+                else if (Form2.choice.Equals("Medium"))
                 {
                     this.Height = 380;
                     this.Width = 315;
@@ -78,7 +82,7 @@ namespace Minesweeper
                     mineField.Height = 330;
                     Program.setLimits(10);
                     Program.randomNewGame(10);
-                    Program.remaining = 75;
+                    Program.totalFields = 100;
                     for (int i = 0; i < 10; i++)
                     {
                         for (int j = 0; j < 10; j++)
@@ -95,7 +99,7 @@ namespace Minesweeper
                     mineField.Height = 500;
                     Program.setLimits(15);
                     Program.randomNewGame(15);
-                    Program.remaining = 169;
+                    Program.totalFields = 15*15;
                     for (int i = 0; i < 15; i++)
                     {
                         for (int j = 0; j < 15; j++)
@@ -118,7 +122,11 @@ namespace Minesweeper
 
         private void statisticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string tmp = "";
+            foreach (PlayerStatistics ps in Program.stats.Values) {
+                tmp = tmp + "\n" + ps.ToString();
+            }
+            MessageBox.Show(tmp, "PlayerStatistics");
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)

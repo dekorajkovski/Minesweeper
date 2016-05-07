@@ -61,6 +61,7 @@
     <Compile Include="MineField.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PlayerStatistics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -102,6 +103,9 @@
     <Content Include="img\bomba.png" />
     <Content Include="img\flag.png" />
     <Content Include="img\ques.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="res\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
