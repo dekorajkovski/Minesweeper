@@ -39,7 +39,8 @@ namespace Minesweeper
         private void timer1_Tick(object sender, EventArgs e)
         {
             textBox1.Text = (DateTime.Now - vremeStart).ToString(@"mm\:ss");
-            Program.timeplayed= (DateTime.Now - vremeStart).ToString(@"ss");
+            int time = (int.Parse((DateTime.Now - vremeStart).ToString(@"mm")) * 60) + (int.Parse((DateTime.Now - vremeStart).ToString(@"ss")));
+            Program.timeplayed = time.ToString();
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)

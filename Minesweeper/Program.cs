@@ -278,7 +278,9 @@ namespace Minesweeper
 
                 int f = 0;
                 int.TryParse(Program.timeplayed, out f);
-                ps.minsPlayed = f;
+                if (win)
+                    ps.minsPlayed = f;
+                else ps.minsPlayed = 9999;
 
                 stats.Add(Form2.name, ps);
 
@@ -325,8 +327,10 @@ namespace Minesweeper
 
                     int f = 0;
                     int.TryParse(seperated[2], out f);
-                    ps.minsPlayed = f;
-
+                    if (g == 1)
+                        ps.minsPlayed = f;
+                    else
+                        ps.minsPlayed = 9999;
                     stats.Add(seperated[0], ps);
 
                 }
@@ -343,8 +347,7 @@ namespace Minesweeper
 
                     int f = 0;
                     int.TryParse(seperated[2], out f);
-                    if(tmp.minsPlayed>f && g==1)
-                    tmp.minsPlayed = f;
+                    if(tmp.minsPlayed>f && g==1) tmp.minsPlayed = f;
 
                 }
             }
